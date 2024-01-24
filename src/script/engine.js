@@ -17,7 +17,7 @@ const playTune = (key) => {
     const clickedKey = document.querySelector(`[data-key="${key}"]`)
     clickedKey.classList.add("active")
     setTimeout(() => {
-      clickedKey.classList.toggle("hide")
+      clickedKey.classList.remove("active")
     }, 150)
 };
 
@@ -28,7 +28,7 @@ const ShowHideKeys = () => {
     pianoKeys.forEach(key => key.classList.toggle('hide'))
 }
 
-// o toggle é um metodo que quando vc apertar o elemento ele vai adicionar o classe hide nas teclas. o toogle funciona como um switch
+// o toggle é um metodo que quando vc apertar o elemento ele vai adicionar o classe hide nas teclas. o toogle funciona como switch
 
 
 pianoKeys.forEach((key) => {
