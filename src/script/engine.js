@@ -1,10 +1,16 @@
 const pianoKeys = document.querySelectorAll(".piano-keys .key");
+let volumeControl = document.querySelector(".volume-control")
+console.log(volumeControl);
+
+
+let mapedkeys = []
 
 
 
 const playTune = (key) => {
     const audio = new Audio(`src/tunes/${key}.mp3`);
-    audio.volume = 0.8;
+    audio.volume = volumeControl.value / 100;
+    console.log(audio.volume);
     audio.play();
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`)
@@ -21,12 +27,17 @@ const playTune = (key) => {
 pianoKeys.forEach((key) => {
     console.log(key.dataset.key);
     key.addEventListener('click', () => playTune(key.dataset.key))
+    mapedkeys.push(key.dataset.key)
 });
 
 
 document.addEventListener("keydown", (e) => {
-    console.log(e.key);
-    playTune(e.key)
+    if (mapedkeys.includes(e.key)) {
+        playTune(e.key)
+        
+    } 
+
+    // so permite que as teclas mapeadas sejam apertadas
 })
 
 
