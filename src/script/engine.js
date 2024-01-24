@@ -4,7 +4,7 @@ const pianoKeys = document.querySelectorAll(".piano-keys .key");
 
 const playTune = (key) => {
     const audio = new Audio(`src/tunes/${key}.mp3`);
-    audio.volume = 1;
+    audio.volume = 0.8;
     audio.play();
 };
 
