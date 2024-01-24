@@ -1,0 +1,156 @@
+.container {
+    width: 780px;
+    border-radius: 20px;
+    border: 1px solid red;
+    padding: 35px 40px;
+    background-color: black;
+}
+
+.container header {
+    color: #b2b2b2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h2 {
+    font-size: 1.6rem;
+}
+
+header .column {
+    display: flex;
+    align-items: center;
+}
+
+header .column span {
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 1.19rem;
+}
+
+.volume-slider input {
+    accent-color: #fff; 
+}
+
+.keys-check input {
+    width: 60px;
+    height: 30px;
+    appearance: none;
+    border-radius: 30px;
+    background-color: #4b4b4b;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.keys-check input::before {
+  background-color: red;
+  border-radius: inherit;
+  content: "";
+  height: 20px;
+  width: 20px;
+  background-color: #8c8c8c;
+  margin-right: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 0.3rem;
+  text-align: center;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.keys-check input:checked::before {
+  left: 2.1rem;
+  background-color: #fff;
+}
+
+.piano-keys {
+    display: flex;
+    margin-top: 40px;
+
+}
+
+.piano-keys span {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.13rem;
+}
+
+.piano-keys .key {
+    cursor: pointer;
+    list-style: none;
+    color: #a2a2a2;
+    user-select: none;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.piano-keys .white {
+    width: 70px;
+    height: 230px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: linear-gradient(#fff 96%, #eee 4%);
+}
+
+.piano-keys .black {
+    width: 44px;
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 0 0 5px 5px;
+    z-index: 2;
+    margin: 0 -22px 0 -22px;
+    background: linear-gradient(#333, #000);
+}
+
+.piano-keys .white:active {
+    box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom #fff 0%, #eee 100%);
+
+}
+
+.piano-keys .black:active {
+    box-shadow: inset -5px 5px 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom #000, #434343);
+
+}
+
+
+/* accent color - modificar a cor do slider
+
+conceitos de relative e absolute
+- div sobre div
+  os filhos são absolutos ao pai
+  os filhos nesse caso são colocadas em cima do pai na hora da mamipulação
+
+  relative -> desloca levando o elemento levando em consideração o fluxo normal da pagina e as propriedades de deslocamente: left right top bottom
+              ele é deslocado em torno de si mesmo. 
+              cria um conceito de emplihamento de elementos(z - index controla a camada)
+
+  absolute -> remove o elemento do fluxo normal da pagina, posicionando o mais proximo do seu elemento acestral. Tambem recebe as props left, right, top e bottom
+              não cria espaço entre as divs (porque ele tira o elemento do fluxo. z-index controle a camada
+
+  pseudo seletor -> cria um elemento antes(before) ou depois(after) do elemento especificado 
+
+  .keys-check input:checked::before -> so ira atuar sobre o elemento quando ele estever com checked ( : prop , :: pseudo seletor) 
+   isso faz a bolinha se deslocar pra direita com o clique( ou seja o so aplica a prop left quando estiver com o checked marcado
+
+   transform: translateY(-50%);
+   transition: all 0.3s ease; são propriedades de animação a translateY redimensiona no eixo Y ja o transition aplica em todos com all uma transição de 0.3s e o ease torna mais suave
+   -- meio dificil de pegar esses questoes de animação mas isso é pratica mesmo
+
+
+   user-select: retira o efeito de selecionado em elementos interativos ( como button)
+
+   z-index -> controla a camada que os elementos ficam( por padrão e a zero, quanto maior mais por cima)
+
+   - o :active adiciona um efeito de mimica com o botão apertado com o uso do box-shadow inset(sombra pra dentro)
+        o active e uma propriedade que diz pra aplicar quando o elemento selecinado estiver ativo( no caso do button quando esta apertado)
+
+   - as teclas pretas levam o inverso das brancas
+     importante que linear-gradient tem o to bottom que indicam a direção que o gradiente vai ( para baixo no caso)
+
+     - inicialmente ele tinha colocado a margem 0 22px 0 -22px isso estava dando um margem a esquerda e tava dando um espaço entre as teclas. so foi mudar para margem -22px nos dois
+     - lados pq a intenção era sobrepor mais
