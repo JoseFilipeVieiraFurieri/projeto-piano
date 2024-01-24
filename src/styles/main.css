@@ -118,6 +118,10 @@ header .column span {
 }
 
 
+.hide span{
+    color: transparent;
+}
+
 
 /* accent color - modificar a cor do slider
 
@@ -155,3 +159,5 @@ conceitos de relative e absolute
 
      - inicialmente ele tinha colocado a margem 0 22px 0 -22px isso estava dando um margem a esquerda e tava dando um espaço entre as teclas. so foi mudar para margem -22px nos dois
      - lados pq a intenção era sobrepor mais
+
+   - adiciona o color transparente para quando o toogle de teclas ( mas tambem funcionaria o display none
