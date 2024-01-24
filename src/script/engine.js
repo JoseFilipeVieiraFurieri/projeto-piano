@@ -15,3 +15,10 @@ pianoKeys.forEach((key) => {
 });
 
 
+document.addEventListener("keydown", (e) => {
+    console.log(e.key);
+    const audio = new Audio(`src/tunes/${e.key}.mp3`);
+    audio.play();
+})
+
+
